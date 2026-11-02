@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "local.fairy-hdd",
+  "name": "Fairy HDD",
+  "version": "0.1.0",
+  "description": "HDD 风格桌宠：Fairy 浮窗 + 开场动画 + 工作状态播报 + HDD 主题 + Fairy 人格语气。",
+  "i18n": {
+    "en": {
+      "name": "Fairy HDD",
+      "description": "HDD-styled desktop pet: a Fairy widget window, a boot intro, work-state voice cues, an HDD color theme, and the Fairy speaking style.",
+      "safetyNotes": "Reads agent lifecycle events (agent.extension) to pick an expression and a voice cue. Injects the bundled Fairy persona text into the system prompt through before_agent_start (local model requests only). Plays bundled WAV files locally. Registers one colour theme through the host runtime theme API. Writes its own files in the plugin data directory. No network access."
+    },
+    "zh-CN": {
+      "name": "Fairy HDD",
+      "description": "HDD 风格桌宠：Fairy 浮窗 + 开场动画 + 工作状态播报 + HDD 主题 + Fairy 人格语气。",
+      "safetyNotes": "通过 agent.extension 读取会话生命周期事件来决定表情与语音；通过 before_agent_start 把随包的 Fairy 人格文本注入系统提示词（只进本地模型请求，不外发、不写入别处）；本地播放随包附带的 WAV；通过宿主运行时主题 API 注册一个配色主题；只在自己数据目录写文件；不访问网络。"
+    }
+  },
+  "author": "local",
+  "main": "main.js",
+  "icon": "assets/icon.png",
+  "ui": {
+    "panel": "renderer/index.html",
+    "title": { "en": "Fairy HDD", "zh-CN": "Fairy HDD" },
+    "shape": "widget",
+    "alwaysOnTop": true,
+    "width": 240,
+    "height": 240
+  },
+  "contributes": {
+    "commands": [
+      { "id": "fairy-hdd.toggle", "title": "桌宠：显示 / 隐藏", "keywords": ["fairy", "桌宠", "宠物"] },
+      { "id": "fairy-hdd.test-intro", "title": "桌宠：重播开场动画", "keywords": ["intro", "开场"] },
+      { "id": "fairy-hdd.apply-theme", "title": "主题：应用 HDD 皮肤", "keywords": ["theme", "主题", "hdd"] },
+      { "id": "fairy-hdd.reset-theme", "title": "主题：恢复默认", "keywords": ["theme", "主题", "reset"] }
+    ],
+    "agentExtensions": ["src/extension.js"],
+    "settings": [
+      { "key": "stateReactions", "title": "跟随会话状态换表情", "type": "boolean", "default": true, "scope": "plugin" },
+      { "key": "voiceEnabled", "title": "语音播报", "type": "boolean", "default": true, "scope": "plugin" },
+      { "key": "lowPower", "title": "低功耗（关闭高频动效）", "type": "boolean", "default": false, "scope": "plugin" }
+    ]
+  },
+  "permissions": ["ui.panel", "agent.extension", "agent.prompt.inject", "ui.theme"],
+  "engines": { "piDesktop": ">=0.14.8" },
+  "activationEvents": ["onStartup", "onCommand:fairy-hdd.toggle", "onCommand:fairy-hdd.test-intro", "onCommand:fairy-hdd.apply-theme", "onCommand:fairy-hdd.reset-theme"]
+}

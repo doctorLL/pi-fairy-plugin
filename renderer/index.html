@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fairy HDD</title>
+    <link rel="stylesheet" href="pet.css" />
+  </head>
+  <body>
+    <!-- 视觉宿主：runtime 要求 class 必须是 dsh-fairy-stage -->
+    <div id="stage" class="dsh-fairy-stage" data-fairy-visual-active="true" data-fairy-state="normal"></div>
+
+    <!-- HDD 开场遮罩（下一步接入时间线） -->
+    <div id="intro" class="intro hidden">
+      <canvas id="introCanvas"></canvas>
+    </div>
+
+    <script src="mascot-bundle.js"></script>
+    <script src="intro.js"></script>
+    <script src="pet.js"></script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+/* Fairy HDD 浮窗：整窗透明，只有眼睛本体可见。 */
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  cursor: default;
+}
+
+#stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+/*
+ * mascot-style.js 给 root 的尺寸是 min(76%, 36vh, 450px) —— 那是给全屏 overlay
+/*
+ * mascot-style.js 给 root 的尺寸是 min(76%, 36vh, 450px) —— 那是给全屏 overlay
+ * 设计的；在浮窗里 36vh 只剩几十像素，眼睛会被缩得极小。
+ *
+ * 该样式是运行时注入 <style> 的，位置在 pet.css 之后，所以这里必须用 !important
+ * 才能稳定压过它（不依赖选择器权重与注入顺序）。
+ */
+#stage #dsh-fairy-root {
+  width: 96% !important;
+  height: 96% !important;
+}
+/* HDD 开场遮罩 */
+.intro {
+  position: absolute;
+  inset: 0;
+  /* mascot root 自带 z-index: 99999，遮罩必须压过它 */
+  z-index: 2147483000;
+  background: #05070a;
+  display: grid;
+  place-items: center;
+}
+
+.intro.hidden {
+  display: none;
+}
+
+#introCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 低功耗：交给 runtime 处理高频动效，这里只压掉额外的合成层开销 */
+#stage[data-fairy-low-power="true"] * {
+  will-change: auto;
+}

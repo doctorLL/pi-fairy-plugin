@@ -1,0 +1,103 @@
+/*
+ * Fairy HDD — 深色 HDD / 终端风格主题。
+ *
+ * 约定（来自宿主 tokens.css 与主题工坊的校验规则）：
+ *   1. 只写与宿主默认值不同的 token，未列出的继承宿主默认；不把整套调色板抄一遍。
+ *   2. 颜色一律 #rrggbb / #rrggbbaa / transparent —— rgba() 不被接受。
+ *   3. --ds-bg-sidebar 必须是纯颜色：宿主用它做 color-mix 算玻璃色罩与描边。
+ *      侧栏底图只能走 --ds-bg-sidebar-image。
+ *   4. 不碰阴影（shadow 类型）与布局尺寸（size 类型），只改颜色与输入栏圆角。
+ *
+ * 设计意图：炭黑底 + 冷蓝强调 + 硬边（输入栏 3px 圆角）+ 偏亮的石墨侧栏，
+ * 让三个面板层次像一台老式磁盘柜。
+ */
+:root[data-theme="dark"] {
+  /* ---- 表面层级 ---- */
+  --ds-bg-primary: #12161a;
+  --ds-bg-secondary: #171c21;
+  --ds-bg-tertiary: #1d232a;
+  --ds-bg-inset: #0b0f12;
+  --ds-bg-under: #0a0d10;
+  --ds-bg-dock: #14181c;
+  --ds-bg-dock-raised: #ffffff08;
+  --ds-bg-elevated: #141a20f0;
+  --ds-bg-elevated-opaque: #1b2128;
+  --ds-bg-elevated-primary: #141a20fa;
+  --ds-bg-hover: #8caaff13;
+  --ds-bg-active: #5d7cff29;
+  --ds-bg-composer: #171c21;
+  --ds-bg-chip: #ffffff0b;
+
+  /* ---- 侧栏：石墨灰 + 玻璃三纱 ---- */
+  --ds-bg-sidebar: #3b4148;
+  --ds-sidebar-glass-tint: #3b4148b8;
+  --ds-sidebar-glass-sheen-top: #ffffff0f;
+  --ds-sidebar-glass-sheen-bottom: #00000047;
+
+  /* ---- 文字四级 ---- */
+  --ds-text-primary: #e2ebf4f2;
+  --ds-text-secondary: #bccad6cc;
+  --ds-text-muted: #96a6b49e;
+  --ds-text-faint: #7c8c9a75;
+  --ds-text-tertiary: #bccad699;
+
+  /* ---- 色块与抬升面 ---- */
+  --ds-tile: #ffffff0b;
+  --ds-tile-hover: #ffffff13;
+  --ds-tile-deep: #00000047;
+  --ds-raised: #1b2128;
+
+  /* ---- 描边三级 ---- */
+  --ds-border-default: #ffffff16;
+  --ds-border-subtle: #ffffff0d;
+  --ds-border-strong: #ffffff2b;
+
+  /* ---- 强调色：冷蓝 ---- */
+  --ds-accent: #5d7cff;
+  --ds-accent-hover: #7d97ff;
+  --ds-accent-soft: #5d7cff2e;
+  --ds-accent-foreground: #0a0e16;
+  --ds-focus: #8aa4ff;
+
+  /* ---- 状态色 ---- */
+  --ds-success: #56c98a;
+  --ds-warning: #e8b44a;
+  --ds-error: #ff6272;
+  --ds-info: #5bc8e8;
+  --ds-purple: #9b86ff;
+
+  /* ---- 会话与代码块 ---- */
+  --ds-tool-row-bg: #ffffff07;
+  --ds-code-head-bg: #ffffff0a;
+  --ds-code-hover-bg: #ffffff12;
+  --ds-thinking-code-bg: #0000004d;
+  --ds-mermaid-canvas: #0e1216;
+  --ds-prose-kbd-fg: #e2ebf4d9;
+
+  /* ---- 浮层与遮罩 ---- */
+  --ds-scrim: #0406099e;
+  --ds-modal-veil: #0406099e;
+
+  /* ---- 输入与设置字段 ---- */
+  --ds-settings-field-bg: #1b2128;
+  --ds-settings-rail-bg: #14181c;
+  --ds-settings-nav-active: #5d7cff29;
+  --ds-field-inset-bg: #0b0f12b3;
+  --ds-field-inset-focus-bg: #0b0f12d9;
+  --ds-placeholder-ink: #96a6b4a6;
+
+  /* ---- 开关 ---- */
+  --ds-switch-track-off: #ffffff14;
+  --ds-switch-track-off-hover: #ffffff1f;
+  --ds-switch-ring-off: #ffffff26;
+  --ds-switch-knob-off: #c2ced8;
+  --ds-switch-knob-on: #5d7cff;
+
+  /* ---- 控件状态 ---- */
+  --ds-send-disabled-bg: #ffffff0f;
+  --ds-send-disabled-fg: #7c8c9a8c;
+
+  /* ---- 硬边：输入栏几乎方角 ---- */
+  --ds-composer-radius: 3px;
+  --ds-composer-radius-lg: 4px;
+}
